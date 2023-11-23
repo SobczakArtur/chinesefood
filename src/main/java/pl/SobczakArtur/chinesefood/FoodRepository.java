@@ -18,4 +18,17 @@ public class FoodRepository {
                 BeanPropertyRowMapper.newInstance(Food.class));
     }
 
+    public Food getById(int id){
+        return jdbcTemplate.queryForObject("SELECT * FROM foodmenu WHERE ID=?",
+                BeanPropertyRowMapper.newInstance(Food.class), id);
+    }
+
+    public int save(List<Food> dishes) {
+        dishes.forEach(dish -> jdbcTemplate
+                .update("INSERT INTO foodmenu(dish, price) VALUES(?, ?)",
+                        dish.getDish(), dish.getPrice()
+                ));
+
+        return 1;
+    }
 }
