@@ -31,4 +31,14 @@ public class FoodRepository {
 
         return 1;
     }
+
+    public int update(Food food){
+        return jdbcTemplate.update("UPDATE foodmenu SET dish=?, price=? WHERE id=?",
+                food.getDish(), food.getPrice(), food.getId());
+    }
+
+    public int delete(int id){
+        return jdbcTemplate.update("DELETE FROM foodmenu WHERE id=?",
+                id);
+    }
 }
