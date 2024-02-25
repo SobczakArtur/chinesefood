@@ -4,3 +4,4 @@ A simple program for adding a dish with price to the database and auto-increment
 - MySQL, 
 - Docker, 
 - REST API
+- Postman
